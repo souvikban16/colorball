@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Wheel.gd" type="Script" id=1]
 [ext_resource path="res://wheel.png" type="Texture" id=2]
+[ext_resource path="res://here.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 116.295, 10.9247 )
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 85.3047
+radius = 47.115
 
 [node name="Wheel" type="Node2D"]
 script = ExtResource( 1 )
@@ -49,6 +50,10 @@ shape = SubResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="centre"]
 shape = SubResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="centre"]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
 [connection signal="body_entered" from="0" to="." method="_on_0_body_entered"]
 [connection signal="body_entered" from="1" to="." method="_on_1_body_entered"]
 [connection signal="body_entered" from="2" to="." method="_on_2_body_entered"]
