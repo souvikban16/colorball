@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ball.gd" type="Script" id=1]
 [ext_resource path="res://ball.png" type="Texture" id=2]
@@ -6,11 +6,19 @@
 [sub_resource type="CircleShape2D" id=1]
 radius = 26.5633
 
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.3119 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
 [sub_resource type="ParticlesMaterial" id=2]
 flag_disable_z = true
-gravity = Vector3( 0, 1, 0 )
+spread = 0.0
+gravity = Vector3( 1, 98, 0 )
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
+scale_curve = SubResource( 4 )
 
 [node name="ball" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -24,5 +32,10 @@ show_behind_parent = true
 scale = Vector2( 1.76178, 1.77672 )
 texture = ExtResource( 2 )
 
-[node name="Particles2D" type="Particles2D" parent="."]
+[node name="Particles2D" type="Particles2D" parent="icon"]
+modulate = Color( 1, 1, 1, 0.290196 )
+show_behind_parent = true
+lifetime = 2.0
+local_coords = false
 process_material = SubResource( 2 )
+texture = ExtResource( 2 )
