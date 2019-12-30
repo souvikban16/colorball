@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ball.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Wheel.tscn" type="PackedScene" id=2]
+[ext_resource path="res://hud.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 711.599, 23.3312 )
+
+[node name="world" type="Node2D"]
+
+[node name="ball" parent="." instance=ExtResource( 1 )]
+position = Vector2( 400, 868.225 )
+
+[node name="Wheel" parent="." instance=ExtResource( 2 )]
+position = Vector2( 400, 368.503 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="ground" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground"]
+position = Vector2( 381.946, 1130.6 )
+shape = SubResource( 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="hud" parent="CanvasLayer" instance=ExtResource( 3 )]
